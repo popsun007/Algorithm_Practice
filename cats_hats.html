@@ -3,65 +3,65 @@
 <head>
 	<title></title>
 	<script type="text/javascript">
+//**********First Problem****************
+	var count = 1;
+	var cats = [];
+	var result = [];
+	for(var i=0; i<100; i++)
+	{
+		cats[i].push(false);
+	};
 
-	// var count = 1;
-	// var cats = [];
-	// var result = [];
-	// for(var i=0; i<100; i++)
-	// {
-	// 	cats[i].push(false);
-	// };
+	for(var i=0; i<100; i+=count)
+	{
 
-	// for(var i=0; i<100; i+=count)
-	// {
+		for(var j=0; j<100; j++)
+		{
+			if(cats[j] == true)
+			{
+				hat = false;
+			}
+			else
+			{
+				hat = true;
+			}
+		}
+		count +=1;
+	}
+	for(var i=0; i<100; i++)
+	{
+		if(cats[i] == true)
+		{
+			result.push(i);
+		}
+	}
+	return result;
 
-	// 	for(var j=0; j<100; j++)
-	// 	{
-	// 		if(cats[j] == true)
-	// 		{
-	// 			hat = false;
-	// 		}
-	// 		else
-	// 		{
-	// 			hat = true;
-	// 		}
-	// 	}
-	// 	count +=1;
-	// }
-	// for(var i=0; i<100; i++)
-	// {
-	// 	if(cats[i] == true)
-	// 	{
-	// 		result.push(i);
-	// 	}
-	// }
-	// return result;
+// *****************Second***************
 
+	function findPro(arr)
+	{
+		var result = 0;
+		var pair1 = 0;
+		var pair2 = 0;
+		for(var i=0; i<arr.length-1; i++)
+		{
+			for(var j= i+1; j<arr.length; j++)
+			{
+				var temp = arr[j] - arr[i];
 
+				if(temp > result)
+				{
+					result = temp;
+					pair1 = i;
+					pair2 = j;
+				}
+			}
+		}
+		return [pair1, pair2];
+	}
 
-	// function findPro(arr)
-	// {
-	// 	var result = 0;
-	// 	var pair1 = 0;
-	// 	var pair2 = 0;
-	// 	for(var i=0; i<arr.length-1; i++)
-	// 	{
-	// 		for(var j= i+1; j<arr.length; j++)
-	// 		{
-	// 			var temp = arr[j] - arr[i];
-
-	// 			if(temp > result)
-	// 			{
-	// 				result = temp;
-	// 				pair1 = i;
-	// 				pair2 = j;
-	// 			}
-	// 		}
-	// 	}
-	// 	return [pair1, pair2];
-	// }
-
-	// console.log(findPro( [ 44, 30, 24, 32, 35, 30, 40, 38 ] ));
+	console.log(findPro( [ 44, 30, 24, 32, 35, 30, 40, 38 ] ));
 
 
 	</script>

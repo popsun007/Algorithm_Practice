@@ -176,7 +176,7 @@ list.display
 # list.display
 
 #sort list
-list.merge_sort(list)
-list.display
+# list.merge_sort(list)
+# list.display
 
 

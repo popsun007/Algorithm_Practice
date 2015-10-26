@@ -55,19 +55,7 @@ end
 method 3:
 
 def remove_elements(head, val)
-    if !head
-        return
-    end
-    dummy = ListNode.new(nil)
-    dummy.next = head
-    prev = dummy
-    while prev.next
-        if prev.next.val == val
-          prev.next = prev.next.next
-        else
-          prev = prev.next
-        end
-    end
-    remove_elements(prev.next, val)
-    return dummy.next
+    head = remove_elements(head.next, val) if head && head.val == val
+    head.next = remove_elements(head.next, val) if head && head.next
+    return head
 end

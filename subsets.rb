@@ -41,7 +41,7 @@ def subsets_helper(result, list, nums, idx)
     i = idx.to_i
     while i < nums.length
         list.push(nums[i])
-        print result.to_s + "\n"
+        print result.to_s + "\n"   
         subsets_helper(result, list, nums, i+1)
         # print result.to_s + "\n"
         list.pop

@@ -1,3 +1,7 @@
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+
 # Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
 
 # For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].

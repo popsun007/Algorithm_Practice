@@ -8,15 +8,15 @@ def subsets(nums)
     results += temp
   end
 
-  return results
+  print results
 end
 
 #Alternative:
-def subsets(nums)
-  results = [[]]
-  nums.sort.each {|num| results += results.map {|result| result + [num] }}
-  return results
-end
+#def subsets(nums)
+#  results = [[]]
+#  nums.sort.each {|num| results += results.map {|result| result + [num] }}
+#  return results
+#end
 
 # def subsets(nums)
 #     nums = nums.sort

@@ -31,9 +31,27 @@ def invert_tree(root)
     return root if root == nil
     
     temp = root.left
+    root.left = root.right
+    root.right = temp
+    
+    invert_tree(root.left)
+    invert_tree(root.right)
+    
+    return root
+    
+end
+
+# or:
+
+def invert_tree(root)
+    
+    return root if root == nil
+    
+    temp = root.left
     root.left = invert_tree(root.right)
     root.right = invert_tree(temp)
     
     return root
     
 end
+

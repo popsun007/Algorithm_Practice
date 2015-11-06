@@ -1,15 +1,34 @@
 def subsets(nums)
-  results = [[]]
-
-  nums.sort.each do |num|
-    temp = results.map do |result|
-      result + [num]
-    end
-    results += temp
-  end
-
-  print results
+    
+    nums.sort!
+    result = []
+    subset_helper(0, 0, result, nums)
+    return result
+    
 end
+
+def subset_helper(start, level, result, nums)
+
+    return if level == nums.length
+    result.push(result)
+    nums.each do |num|
+        subset_helper(start+1, level+1, result + [num], nums)
+    end
+
+end
+
+# def subsets(nums)
+#   results = [[]]
+
+#   nums.sort.each do |num|
+#     temp = results.map do |result|
+#       result + [num]
+#     end
+#     results += temp
+#   end
+
+#   print results
+# end
 
 #Alternative:
 #def subsets(nums)

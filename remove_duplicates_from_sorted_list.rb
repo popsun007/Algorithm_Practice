@@ -33,3 +33,21 @@ def delete_duplicates(head)
     end
     return head
 end
+
+
+# javaScript Recusion:
+
+function deleteDuplicates (head){
+    if (head == null || head.next == null){
+        return head;
+    }
+    
+    head.next = deleteDuplicates(head.next);
+    if(head.val == head.next.val){
+        return head.next = head.next.next;
+    }
+    else{
+        return head = head.next;    
+    }
+    
+}

@@ -35,7 +35,7 @@ def delete_duplicates(head)
 end
 
 
-# javaScript Recusion:
+# javaScript Recursion:
 
 function deleteDuplicates (head){
     if (head == null || head.next == null){

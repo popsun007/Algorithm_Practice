@@ -35,19 +35,21 @@ def delete_duplicates(head)
 end
 
 
-# javaScript Recursion:
+# recursion solution:
 
-function deleteDuplicates (head){
-    if (head == null || head.next == null){
-        return head;
-    }
+def delete_duplicates(head)
+    if head == nil || head.next == nil
+        return head
+    end
     
-    head.next = deleteDuplicates(head.next);
-    if(head.val == head.next.val){
-        return head.next = head.next.next;
-    }
-    else{
-        return head = head.next;    
-    }
+    current = head
+    if current.val == current.next.val
+        current.next = current.next.next
+        delete_duplicates(current)
+    else
+        current = current.next
+        delete_duplicates(current)
+    end
     
-}
+    return head
+end

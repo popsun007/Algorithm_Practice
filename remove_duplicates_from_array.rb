@@ -22,3 +22,20 @@ def remove_duplicates(nums)
     end
     return nums.length - count
 end
+
+#two pointers
+
+def remove_duplicates(nums)
+    if nums == nil || nums.length == 0
+        return 0
+    end
+    
+    idx = 0
+    for i in 0...nums.length
+        if nums[i] != nums[idx]
+            idx += 1
+            nums[idx] = nums[i]
+        end
+    end
+    return idx + 1
+end

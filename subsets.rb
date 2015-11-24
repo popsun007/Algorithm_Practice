@@ -1,3 +1,26 @@
+#Method Recursion1:
+def subsets(nums)
+    if nums === nil 
+        return nums
+    end
+    nums.sort!
+    result = []
+    helper([], 0, nums, result)
+    return result
+end
+
+def helper(current, depth, nums, result)
+    if depth === nums.length
+        result.push(current)
+        return 
+    end
+        
+    helper(current, depth + 1, nums, result)
+    helper(current + [nums[depth]], depth + 1, nums, result)
+end
+
+
+#Method Rcursion2:
 def subsets(nums)
     
     nums.sort!
@@ -16,6 +39,8 @@ def subset_helper(start, level, result, nums)
     end
 
 end
+
+
 
 # def subsets(nums)
 #   results = [[]]

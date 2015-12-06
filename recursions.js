@@ -272,3 +272,61 @@ function flatten(arr){
 
 var arr = [[1,[9]],[[[[1]]]],[3,4],[5,[6,[7]]]];
 console.log(flatten(arr));
+
+
+ /**
+  *                       Problem VI: Pivot
+  *
+  *  Prompt: Given a list of integers and a pivot index, split the list in two in regards to the pivot.
+  *          Place all elements less than the element at the pivot index in the first list, and all other
+  *          elements into the second list.
+  *
+  *  Input: A list (array), Pivot Index (integer)
+  *  Ouput: A list of two lists (two arrays organized by pivot element)
+  *
+  *  Example:
+  *
+  *    Input: [1,9,4,3,5], 4
+  *    Output: [[1,4,3],[5,9]]
+  **/
+
+function pivotList(arr, pivot){
+  var result1 = [];
+  var result2 = [];
+  
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] <= pivot){
+      result1.push(arr[i]);
+    }
+    else{
+      result2.push(arr[i]);
+    }
+  }
+  
+  return [result1, result2];
+
+}
+
+function pivotListRecursion(arr, pivot){
+  var temp1 = [];
+  var temp2 = [];
+  pivotHelper(0);
+  
+  function pivotHelper(position){
+    if(position === arr.length){
+      return; 
+    }
+    
+    if(arr[position] <= pivot){
+      temp1.push(arr[position]);
+    }
+    else{
+      temp2.push(arr[position]);
+    }
+    return pivotHelper(position + 1);
+  }
+  
+  return [temp1, temp2];
+}
+
+console.log(pivotListRecursion([1, 8, 4, 3, 5], 4));

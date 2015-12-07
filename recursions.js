@@ -330,3 +330,79 @@ function pivotListRecursion(arr, pivot){
 }
 
 console.log(pivotListRecursion([1, 8, 4, 3, 5], 4));
+
+/**
+  *                       Problem VII: Merge
+  *
+  *  Prompt: Merge two sorted lists into one sorted list.
+  *
+  *  Input: Two sorted lists (two array)
+  *  Ouput: A sorted list (merged sorted lists)
+  *
+  *  Example:
+  *
+  *    Input: [1,3,5], [2,4,9,12]
+  *    Output: [1,2,3,4,5,9,12]
+  **/
+
+function mergeSortedList(arr1, arr2){
+  var result = [];
+  
+  while(arr1.length > 0 && arr2.length > 0){
+    if(arr1[0] > arr2[0]){
+      result.push(arr2.shift());
+    }
+    else{
+      result.push(arr1.shift());
+    }
+  }
+  
+  if(arr1){
+    for(var j = 0; j < arr2.length; j++){
+      result.push(arr2[j]);
+    }
+  }
+  if(arr2){
+    for(var k = 0; k < arr1.length; k++){
+      result.push(arr1[k]);
+    }
+  }
+  
+  return result;
+}
+
+function mergeSortedListRecursion(arr1, arr2){
+  var result = [];
+  mergeHelper();
+  
+  function mergeHelper(){
+
+    
+    if(arr1.length > 0 && arr2.length > 0 && arr1[0] < arr2[0]){
+      result.push(arr1.shift());
+    }
+    else{
+      result.push(arr2.shift());
+    }
+
+    
+    if(arr1.length === 0){
+      for(var i = 0; i < arr2.length; i++){
+        result.push(arr2[i]);
+      }
+      return;
+    }    
+    if(arr2.length === 0){
+      for(var j = 0; j < arr1.length; j++){
+        result.push(arr1[j]);
+      }
+      return;
+    }
+    
+    return mergeHelper();
+  }
+  
+  return result;
+}
+
+console.log(mergeSortedListRecursion([1,3,5], [2,4,9,12]));

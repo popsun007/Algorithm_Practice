@@ -8,18 +8,21 @@ def quick_sort(arr)
   great = []
 
   for i in 0...arr.length
-    if i != pivot && arr[i] <  arr[pivot]
+    if i === pivot
+      next
+    end 
+    if arr[i] < arr[pivot]
       less.push(arr[i])
     else
       great.push(arr[i])
     end
   end
 
-  quick_sort(less) + [pivot] + quick_sort(great)
+  quick_sort(less) + [arr[pivot]] + quick_sort(great)
 end
 
-arr = [43, 5, 9, 3, 0, 4, 7]
+arr = [43, 3, 5, 9, 3, 0, 4, 7]
 
-quick_sort(arr)
+print quick_sort(arr)
 
-put arr
+ 

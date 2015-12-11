@@ -1,7 +1,10 @@
 class Hash_table
-  @storage = []
-  @buckets = 8
-  @size = 0
+  attr_accessor :storage, :buckets, :size
+  def initialize
+    @storage = []
+    @buckets = 8
+    @size = 0
+  end
 
   def hash(str, buckets)
     hash = 5381
@@ -26,7 +29,7 @@ class Hash_table
       end
     else
       @storage[index] = []
-      @storage[index].push([])
+      @storage[index].push(["cry", 5555])
       @size += 1
       return 
     end
@@ -41,8 +44,8 @@ end
 bag = Hash_table.new
 
 
-puts bag
+puts bag.storage
 
 bag.insert("tess", "haha")
 
-# bag.wang
+puts bag.storage

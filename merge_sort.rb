@@ -1,5 +1,3 @@
-
-arr = [3, 4, 5, 0, -1, 29]
 def merge_sort(array)
 	
 	if array.length == 1
@@ -16,6 +14,7 @@ end
 
 def arrange(left, right)
 	sorted = []
+
 	while left[0] && right[0] 
 		if left[0] >= right[0]
 			sorted.push(right.shift)
@@ -23,14 +22,17 @@ def arrange(left, right)
 			sorted.push(left.shift)
 		end
 	end
+
 	while left[0]
 		sorted.push(left.shift)
 	end
 	while right[0]
 		sorted.push(right.shift)
 	end
+
 	return sorted
 end
 
+arr = [3, 4, 0, 5, 0, -1, 29, 29]
 display = merge_sort(arr)
 print display

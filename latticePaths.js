@@ -1,5 +1,5 @@
 function latticePaths(n, x, y, cache){
-	if(x == undefined){
+	if(x === undefined){
 		x = 0;
 		y = 0;
 		cache = {};

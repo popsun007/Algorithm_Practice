@@ -61,3 +61,23 @@ end
 puts lattice_path(3)
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

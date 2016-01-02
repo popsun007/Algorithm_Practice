@@ -1,8 +1,7 @@
 module BinaryTree
 
 	class Node
-		attr_reader :value
-		attr_accessor :left, :right
+		attr_accessor :value, :left, :right
 		def initialize(val)
 			@value = val
 			@left , @right = nil, nil
@@ -57,13 +56,15 @@ module BinaryTree
 
       new_tree_values = []
       traverse(new_tree_values, self, val)
-      print new_tree_values
+
       new_tree = BinaryTree::Node.new(new_tree_values[0]) # Create a new tree, new_tree_values[0] is root node value
       for i in 1...new_tree_values.length
         new_tree.insert(new_tree_values[i])
       end
 
-      return new_tree
+      self.value = new_tree.value
+      self.right = new_tree.right
+      self.left = new_tree.left
 		end
 
     def traverse(values_arr, root, target)
@@ -86,15 +87,22 @@ tree = BinaryTree::Node.new(5)
 tree.left = BinaryTree::Node.new(3)
 tree.right = BinaryTree::Node.new(7)
 
-test_node = BinaryTree::Node.new(nil)
-# tree.insert(6)
-# tree.insert(8)
-# tree.insert(2)
-# tree.insert(1)
-# tree.delete(1)
-# tree.delete(2)
-print tree.delete(3).delete(5).inspect
-# tree.delete(7)
-# puts tree.inspect
+tree.insert(6)
+tree.insert(8)
+tree.insert(2)
+tree.insert(1)
+
+puts tree.inspect
+
+puts "------before and after deletion------"
+
+tree.delete(1)
+tree.delete(2)
+tree.delete(3)
+tree.delete(7)
+tree.delete(6)
+tree.delete(8)
+
+puts tree.inspect
 # puts tree.include?(8)
 

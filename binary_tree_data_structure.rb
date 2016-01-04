@@ -49,6 +49,20 @@ module BinaryTree
 			return false
 		end
 
+    def search(val, node)
+      if node.nil?
+        return "Don't have this node"
+      end
+
+      if node.value === val
+        return node
+      elsif node.value < val
+        search(val, node.right)
+      else
+        search(val, node.left)
+      end
+    end
+
 		def delete(val)
 			if !self.include?(val)
 				return "Don't have this node"

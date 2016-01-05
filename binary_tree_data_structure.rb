@@ -63,6 +63,19 @@ module BinaryTree
       end
     end
 
+    def is_valid(node, min = -1.0 / 1.0, max = 1.0 / 1.0)
+      while !node.left.nil? && !node.right.nil?
+        if node.value < min || node.value > max
+          return false
+        end
+
+        is_valid(node.left, min, node.vaule)
+        is_valid(node.right, node.vaule, max)
+      end
+
+      return true
+    end
+
 		def delete(val)
 			if !self.include?(val)
 				return "Don't have this node"

@@ -22,7 +22,7 @@ def quick_sort(arr)
 end
 
 arr = [43, 3, 5, 9, 3, 0, 4, 7]
-
+arr = [1,9,9,2]
 print quick_sort(arr)
 
  

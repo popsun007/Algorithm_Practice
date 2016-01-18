@@ -12,14 +12,11 @@ var getRow = function(rowIndex) {
 		result[i] = [];
 		result[i][0] = result[i][i] = 1;
 
-		if(i < 2){
-			continue;
-		}
 		for(var j = 1; j < i; j++){
-			result[i][j] = result[i -1][j -1] + result[i -1][j];
+			result[i][j] = result[i - 1][j - 1] + result[i - 1][j];
 		}
 	}
-	return result[rowIndex];
+	return result;
 };
 
-console.log(getRow(3));
+console.log(getRow(1));

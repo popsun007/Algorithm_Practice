@@ -37,3 +37,57 @@ var oddEvenList = function(head) {
     odd_work.next = dummy_even.next;
     return dummy_odd.next;
 };
+
+//Space complexity: O(1)
+
+var oddEvenList = function(head){
+	if(head === null){
+		return head;
+	}
+
+	oddNodes = head;
+	evenNodes = head.next;
+	evenHead = head.next;
+
+	while(oddNodes.next !== null && evenNodes.next !== null){
+        oddNodes.next = oddNodes.next.next;
+		evenNodes.next = evenNodes.next.next;
+        oddNodes = oddNodes.next;
+		evenNodes = evenNodes.next;
+	}
+
+	oddNodes.next = evenHead;
+	
+    return head;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -55,16 +55,16 @@ function isPalindrome(head){
 	}
 
 //2: reverse the latter half of linked list
-	var compare_list = reverseLinkedList(middle.next);
+	var compareList = reverseLinkedList(middle.next);
 
 //3: check is palindrome or not
 	var result = true;
-	while(compare_list !== null){
-		if(head.val !== compare_list.val){
+	while(compareList !== null){
+		if(head.val !== compareList.val){
 			result = false;
 		}
 		head = head.next;
-		compare_list = compare_list.next;
+		compareList = compareList.next;
 	}
 
 	return result;
@@ -79,10 +79,10 @@ function reverseLinkedList(head){
 		prev = null;
 
 	while(current !== null){
-		var next_node = current.next;
+		var nextNode = current.next;
 		current.next = prev;
 		prev = current;
-		current = next_node;
+		current = nextNode;
 	}
 
 	return prev;

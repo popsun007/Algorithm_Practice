@@ -65,3 +65,33 @@ function reverseList(head){
 
 	return prev;
 }
+
+
+//Method2: 4 pointer
+
+var reverseBetween = function(head, m, n){
+	if(head === null){
+		return head;
+	}
+
+	var dummy = new ListNode(null);
+	dummy.next = head;
+	var prev = dummy;
+
+	for(var i = 1; i < m; i++){
+		prev = prev.next;
+	}
+
+	var start = prev.next,
+		nextNode = start.next;
+
+	for(var j = 0; j < n - m; j++){
+		start.next = nextNode.next;
+		nextNode.next = prev.next;
+		prev.next = nextNode;
+		nextNode = start.next;
+	}
+
+	return dummy.next;
+
+};

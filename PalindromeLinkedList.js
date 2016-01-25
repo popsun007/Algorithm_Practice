@@ -16,28 +16,28 @@
 
 //Method 1:
 
-// function isPalindrome(head){
-// 	if(head === null){
-// 		return true;
-// 	}
+function isPalindrome(head){
+	if(head === null){
+		return true;
+	}
 
-// 	var list = [],
-// 		current = head;
+	var list = [],
+		current = head;
 
-// 	while(current !== null){
-// 		list.push(current.val);
-// 		current = current.next;
-// 	}
+	while(current !== null){
+		list.push(current.val);
+		current = current.next;
+	}
 
-// 	for(var i = 0; i < list.length / 2; i++){
-// 		last_index = list.length - 1 - i;
-// 		if(list[i] !== list[last_index]){
-// 			return false;
-// 		}
-// 	}
+	for(var i = 0; i < list.length / 2; i++){
+		lastIndex = list.length - 1 - i;
+		if(list[i] !== list[lastIndex]){
+			return false;
+		}
+	}
 
-// 	return true;
-// }
+	return true;
+}
 
 //Method 2: O(n) time and O(1) space
 function isPalindrome(head){

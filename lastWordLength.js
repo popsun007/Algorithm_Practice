@@ -7,14 +7,14 @@ var lengthOfLastWord = function(s) {
     	return 0;
     }
 
-    result_arr = s.split(" ");
-    lastWordIndex = result_arr.length - 1;
+    resultArr = s.split(" ");
+    lastWordIndex = resultArr.length - 1;
 
     while(lastWordIndex >= 0){
-    	if(result_arr[lastWordIndex] === ""){
+    	if(resultArr[lastWordIndex] === ""){
     		lastWordIndex--;
     	}else{
-    		return result_arr[lastWordIndex].length;
+    		return resultArr[lastWordIndex].length;
     	}
     }
 

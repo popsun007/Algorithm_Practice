@@ -1,33 +1,23 @@
+// Determine whether an integer is a palindrome. Do this without extra space.
 /**
  * @param {number} x
  * @return {boolean}
  */
 
 var isPalindrome = function(x) {
-    if(x === null || (x > -10 && x < 10)){
-    	return true;
-    }
+	if(x === null || x < 0 || (x !== 0 && x % 10 === 0)){
+		return false;
+	}
 
-    x = Math.abs(x);
-    var count_ten = 0,
-		last_digit = x,
-		first_digit = x;
+	var reverse_x = 0,
+		temp_x = x;
 
-    while(first_digit > 10){
-    	console.log(first_digit);
-    	first_digit = first_digit / 10;
-    	first_digit = Math.floor(first_digit);
-    	count_ten++;
-    }
-
-    first_digit = Math.floor(first_digit);
-    
-    if(first_digit !== last_digit){
-    	return false;
-    }
-
-    x = x - first_digit * Math.pow(10, count_ten) - last_digit;
-    return isPalindrome(x);
+	while(temp_x > 0){
+		reverse_x = temp_x % 10 + reverse_x * 10;
+		temp_x /= 10;
+		temp_x = Math.floor(temp_x);
+	}
+	return reverse_x === x;
 };
 
 console.log(isPalindrome(2026886202));

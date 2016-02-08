@@ -1,3 +1,7 @@
+# for i in 100...1000
+#   system("curl -u popsun@me.com:ms4TVp https://remeeting.com/quiz/python_script.cgi?number=" + i.to_s)
+# end
+
 require 'curb'
 
 for i in 100...1000

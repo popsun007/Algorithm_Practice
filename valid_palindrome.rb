@@ -17,15 +17,13 @@ def is_palindrome(s)
 
   characters = []
   for i in 0...s.length
-    dig_s = s[i].ord
-    if (dig_s > 64 && dig_s < 91) || (dig_s > 96 && dig_s < 123) || (dig_s > 47 && dig_s < 58) # not alphanumeric characters
-      characters.push(s[i])
+    ascii_char = s[i].ord
+    if (ascii_char > 64 && ascii_char < 91) || (ascii_char > 96 && ascii_char < 123) || (ascii_char > 47 && ascii_char < 58) # only run if s[i] is an alphanumeric character
+      characters.push(s[i].downcase)
     end
   end
-  print characters.join("")
-  puts "----"
-  print characters.reverse.join("")
-  return characters.join("").downcase === characters.reverse.join("").downcase
+
+  return characters.join("") === characters.reverse.join("")
 end
 
 puts is_palindrome("`l;`` 1o1 ??;l`")

@@ -11,22 +11,21 @@
 # @param {String} s
 # @return {Boolean}
 def is_palindrome(s)
-  arr_s = s.split("")
-  while arr_s.length != 0
-    first_char = arr_s.shift
-    until first_char.ord > 64 && first_char.ord < 123 && arr_s.length != 0 #ignoring cases or space
-      first_char = arr_s.shift
-    end
-
-    last_char = arr_s.pop
-    until last_char.ord > 64 && last_char.ord < 123 && arr_s.length != 0 #ignoring cases or space
-      last_char = arr_s.pop
-    end
-
-    if first_char != last_char
-      return false
-    end
+  if s.nil? || s.length === 0
+    return true
   end
 
-  return true
+  characters = []
+  for i in 0...s.length
+    dig_s = s[i].ord
+    if (dig_s > 64 && dig_s < 91) || (dig_s > 96 && dig_s < 123) || (dig_s > 47 && dig_s < 58) # not alphanumeric characters
+      characters.push(s[i])
+    end
+  end
+  print characters.join("")
+  puts "----"
+  print characters.reverse.join("")
+  return characters.join("").downcase === characters.reverse.join("").downcase
 end
+
+puts is_palindrome("`l;`` 1o1 ??;l`")

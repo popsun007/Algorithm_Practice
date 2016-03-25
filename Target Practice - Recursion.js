@@ -205,7 +205,31 @@ function merge(array1, array2){
 }
 merge([1, 4, 7],[2, 3, 6, 9]);
 
-
+function mergeSortedList(arr1, arr2){
+  var result = [];
+  
+  while(arr1.length > 0 && arr2.length > 0){
+    if(arr1[0] > arr2[0]){
+      result.push(arr2.shift());
+    }
+    else{
+      result.push(arr1.shift());
+    }
+  }
+  
+  if(arr1){
+    for(var j = 0; j < arr2.length; j++){
+      result.push(arr2[j]);
+    }
+  }
+  if(arr2){
+    for(var k = 0; k < arr1.length; k++){
+      result.push(arr1[k]);
+    }
+  }
+  
+  return result;
+}
 
 
 // 3. What are side effects?

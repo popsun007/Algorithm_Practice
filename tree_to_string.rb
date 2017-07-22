@@ -30,6 +30,8 @@ except we can't omit the first parenthesis pair to break the one-to-one mapping 
 
 Solution:
 
+Method 1 recursion:
+
 def tree2str(t)
   if t == nil
     return ""
@@ -41,4 +43,39 @@ def tree2str(t)
     return "()" + tree2str(t.right)
   end
   return t.val.to_s + "(" + tree2str(t.left) + ")" + "(" + tree2str(t.right) + ")"
+end
+
+Method 2 stack:
+
+def tree2str(t)
+  visited = {}
+  result = ""
+  stack = []
+  stack.push(t)
+  
+  if t.nil?
+    return result
+  end
+  
+  while !stack.empty?
+    node = stack.last
+    if visited[node].nil?
+      visited.store(node, 1)
+      result += "(" + node.val.to_s
+      if node.left.nil? && node.right != nil
+        result += "()"
+      end
+      if node.right != nil
+        stack.push(node.right)
+      end
+      if node.left != nil
+        stack.push(node.left)
+      end
+    else
+      stack.pop
+      result += ")"
+    end
+  end
+  
+  return result[1..-2] #strip () at beginning and end
 end

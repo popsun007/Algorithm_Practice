@@ -11,6 +11,7 @@ The minimum depth is the number of nodes along the shortest path from the root n
 
 def move_zeroes(nums)
     count = 0
+
     while nums.find_index(0)
         nums.delete_at(nums.find_index(0))
         count += 1
@@ -18,4 +19,52 @@ def move_zeroes(nums)
     count.times do |e|
         nums.push(0)
     end
+end
+
+def move_zeroes(nums)
+    count = 0
+    nums.each do |num|
+        count += 1 if num == 0
+    end
+    
+    nums.delete(0)
+    
+    count.times { nums << 0 }
+    
+    nums
+end
+
+def move_zeroes(nums)
+    zero_index = 0
+    
+    for i in 0...nums.length
+        if nums[i] != 0
+            nums[zero_index] = nums[i]
+            zero_index += 1
+        end
+    end
+    
+    while zero_index < nums.length
+        nums[zero_index] = 0
+        zero_index += 1
+    end
+    
+    nums
+end
+
+def move_zeroes(nums)
+    swap_zero = 0
+    current = 0
+    
+    while current < nums.length
+        if nums[current] != 0
+            temp = nums[current]
+            nums[current] = nums[swap_zero]
+            nums[swap_zero] = temp
+            swap_zero += 1
+        end
+        current += 1
+    end
+    
+    nums    
 end

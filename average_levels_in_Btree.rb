@@ -13,7 +13,7 @@ The average value of nodes on level 0 is 3,  on level 1 is 14.5, and on level 2 
 Note:
 The range of node's value is in the range of 32-bit signed integer.
 
-
+DFS method 1:
 def average_of_levels(root)
     sums = level_sum(root, 0, {})
 
@@ -66,3 +66,37 @@ def count_nums(node, level, nums)
     
     nums
 end
+
+DFS method 2:
+def average_of_levels(root)
+    count_sum = dfs(root, 0, [], [])
+    
+    sums = count_sum[0]
+    counts = count_sum[1]
+    result = []
+    for i in 0...counts.length
+        result << sums[i].to_f / counts[i]
+    end
+    
+    result
+end
+
+def dfs(node, level, counts, sums)
+    if node.nil?
+        return
+    end
+    
+    if level == counts.length #new level, need to initialize first
+        counts[level] = 1
+        sums[level] = node.val
+    else
+        counts[level] += 1
+        sums[level] += node.val
+    end
+    
+    dfs(node.left, level + 1, counts, sums)
+    dfs(node.right, level + 1, counts, sums)
+    
+    [sums, counts]
+end
+

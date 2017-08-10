@@ -100,3 +100,34 @@ def dfs(node, level, counts, sums)
     [sums, counts]
 end
 
+BFS method 3:
+
+def average_of_levels(root)
+    result = []
+    queue = []
+    queue << root
+    
+    while !queue.empty?
+        temp_queue = []
+        sum = 0
+        count = 0
+        while !queue.empty?
+            current = queue.shift
+            sum += current.val
+            if !current.left.nil?
+                temp_queue << current.left
+            end
+            
+            if !current.right.nil?
+                temp_queue << current.right
+            end
+            
+            count += 1
+        end
+        
+        queue = temp_queue
+        result << (sum.to_f / count)
+    end
+    
+    result
+end

@@ -49,7 +49,7 @@ function validPairs(numStrs){
     if(Number(numStr) > 2400){
       break;
     }
-    if(Number(numStr[0]) > 2 || Number(numStr[1]) > 4 || Number(numStr[2]) > 5 ){
+    if(Number(numStr[2]) > 5 ){
       continue;
     }else{
       valids.push(numStr);
@@ -84,4 +84,5 @@ function solution(A, B, C, D){
 
 solution(2, 4, 0, 0);
 solution(1, 8, 3, 2);
+solution(0, 7, 3, 0);
 solution(9, 1, 9, 7);

@@ -16,7 +16,7 @@ end
 
 # Recursion with side effects method:
 def permute(nums)
-  if nums.nil? || nums.length === 0
+  if nums.nil? || nums.size === 0
     return []
   end
 
@@ -27,19 +27,18 @@ def permute(nums)
 end
 
 def permute_generator(sub_nums, current, result, record)
-  if sub_nums === []
-    if record[current].nil?
-      result.push(current)
-    end 
+  if sub_nums.empty? && record[current].nil?
+    record.store(current, 1)
+    result << current
     return
   end
 
   for i in 0...sub_nums.length
-    new_sub = sub_nums[0...i] + sub_nums[i + 1...sub_nums.length] #get new sub_nums without sub_nums[i]
+    new_sub = sub_nums[0...i] + sub_nums[i + 1...sub_nums.length] # Get new sub_nums without sub_nums[i]
     permute_generator(new_sub, current + [sub_nums[i]], result, record)
   end
 
-  return result
+  result
 end
 
 

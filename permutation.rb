@@ -4,44 +4,44 @@
 # [1,2,3] have the following permutations:
 # [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
 
-# # Ruby cheating method:
-# def permute(nums)
-#     if nums === nil || nums.length === 0
-#         return []
-#     end
+# Ruby cheating method:
+def permute(nums)
+    if nums === nil || nums.length === 0
+        return []
+    end
     
-#     nums.permutation.to_a
+    nums.permutation.to_a
     
-# end
+end
 
-# # Recursion with side effects method:
-# def permute(nums)
-#   if nums.nil? || nums.size === 0
-#     return []
-#   end
+# Recursion with side effects method:
+def permute(nums)
+  if nums.nil? || nums.size === 0
+    return []
+  end
 
-#   result = []
-#   record = {}
+  result = []
+  record = {}
 
-#   permute_generator(nums, [], result, record)
-# end
+  permute_generator(nums, [], result, record)
+end
 
-# def permute_generator(sub_nums, current, result, record)
-#   if sub_nums.empty? && record[current].nil?
-#     record.store(current, 1)
-#     result << current
-#     return
-#   end
+def permute_generator(sub_nums, current, result, record)
+  if sub_nums.empty? && record[current].nil?
+    record.store(current, 1)
+    result << current
+    return
+  end
 
-#   for i in 0...sub_nums.length
-#     new_sub = sub_nums[0...i] + sub_nums[i + 1...sub_nums.length] # Get new sub_nums without sub_nums[i]
-#     permute_generator(new_sub, current + [sub_nums[i]], result, record)
-#   end
+  for i in 0...sub_nums.length
+    new_sub = sub_nums[0...i] + sub_nums[i + 1...sub_nums.length] # Get new sub_nums without sub_nums[i]
+    permute_generator(new_sub, current + [sub_nums[i]], result, record)
+  end
 
-#   result
-# end
+  result
+end
 
-# Swap element method:
+Swap element method I:
 def permute(nums)
   result = [nums]
   record = {}
@@ -66,6 +66,7 @@ def generate(nums, result, terminate)
       break
     end
   end
+
   # All numbers are in descending order, terminate the program
   if pivot.nil?
     return result
@@ -92,4 +93,33 @@ def generate(nums, result, terminate)
   generate(temp_nums, result, terminate)
 end
 
-p permute([1, 1, 2, 3])
+# Swap method II:
+
+def permute(nums)
+ generate(nums, 0, [], {})
+end
+
+def generate(nums, pointer, result, record)
+  if pointer >= nums.size && record[nums].nil?
+    result << nums.dup
+    record.store(nums, 1)
+    return
+  end
+
+  pointer.upto(nums.size - 1) do |i|
+    swap(nums, pointer, i)
+    generate(nums, pointer + 1, result, record)
+    swap(nums, pointer, i)
+  end
+
+  result
+end
+
+def swap(nums, a, b)
+  temp = nums[a]
+  nums[a] = nums[b]
+  nums[b] = temp
+end
+
+p permute([1, 2, 3])
+

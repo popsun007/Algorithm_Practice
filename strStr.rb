@@ -9,18 +9,16 @@ def str_str(haystack, needle)
   end
 
   0.upto(haystack.size - needle.size) do |i|
-  	count = 0
   	j = 0
   	while j < needle.size 
   		unless haystack[i + j] == needle[j]
   			break
   		end
 
-  		count += 1
   		j += 1
   	end
 
-  	if count == needle.size
+  	if j == needle.size
   		return i
   	end
   end

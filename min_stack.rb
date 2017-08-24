@@ -37,7 +37,40 @@ class MinStack
 end
 
 # Use a 2D array to represent the stack is also an idea. Ex: stack = [[2, -3], [0, -3]]. 
+class MinStack
+	def initialize
+		@stack = []
+	end
 
+	def push(x)
+		min = get_min
+		if min.nil? || min > x 
+			min = x
+		end
+
+		@stack << [x, min]
+	end
+
+	def top
+		if @stack.empty?
+			return nil
+		end
+
+		@stack.last[0]
+	end
+
+	def pop
+		@stack.pop
+	end
+
+	def get_min
+		if @stack.empty?
+			return nil
+		else
+			return @stack.last[1]
+		end
+	end
+end
 # Test cases:
 min_stack = MinStack.new
 min_stack.push(2)

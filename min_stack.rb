@@ -12,7 +12,7 @@ class MinStack
 		@stack << x
 	end
 
-	def top()
+	def top
 		if @stack.empty?
 			return nil
 		end
@@ -20,14 +20,14 @@ class MinStack
 		@stack.last
 	end
 
-	def pop()
+	def pop
 		if @stack.last == @min
 			@min = @stack[0...@stack.size - 1].min # Find the new min from the rest of the @stack expect the last number
 		end
 		@stack.pop
 	end
 
-	def get_min()
+	def get_min
 		if @stack.empty?
 			return nil
 		end
@@ -36,7 +36,7 @@ class MinStack
 	end
 end
 
-# Use a 2D array to represent the stack is also an idea. Ex: stack = [[2, -3], [0, -3]]. 
+# Use a 2D array to represent the stack is also an idea. Store the value at the first position, and the minimum value at the last position. Ex: stack = [[2, -3], [0, -3]]. 
 class MinStack
 	def initialize
 		@stack = []

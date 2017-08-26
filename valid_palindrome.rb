@@ -25,9 +25,6 @@ def is_palindrome(s)
   return characters.join("") === characters.reverse.join("")
 end
 
-
-
-
 def is_palindrome(s)
   if s.nil?
     return false
@@ -48,6 +45,39 @@ def is_palindrome(s)
   end
 
   return true
+end
+
+# Two pointer:
+def is_palindrome(s)
+  if s.nil?
+    return false
+  end
+
+  start_idx = 0
+  end_idx = s.size - 1
+
+  while start_idx < end_idx
+    while start_idx < end_idx && is_alphanumeric(s[start_idx])
+      start_idx += 1
+    end    
+      
+    while start_idx < end_idx && is_alphanumeric(s[end_idx])
+      end_idx -= 1
+    end
+
+    if s[start_idx].downcase != s[end_idx].downcase
+      return false
+    end
+
+    start_idx += 1
+    end_idx -= 1
+  end
+
+  return true
+end
+
+def is_alphanumeric(char)
+  !(("a".."z").include?(char.downcase) || ("0".."9").include?(char))
 end
 
 puts is_palindrome("`l;`` 1o1 ??;l`")

@@ -52,3 +52,58 @@ end
 def is_palindrome(arr)
     arr == arr.reverse
 end
+
+# -------------------------------
+# Recursion
+def is_symmetric(root)
+    root.nil? || check_symmetric(root, root)
+end
+
+def check_symmetric(node_l, node_r)
+    if node_l.nil? || node_r.nil?
+        return node_l == node_r
+    end
+    
+    if node_l.val != node_r.val
+        return false
+    end
+    
+    check_symmetric(node_l.left, node_r.right) && check_symmetric(node_l.right, node_r.left)
+end
+
+# --------------------------------
+
+# Non-recursion
+def is_symmetric(root)
+    if root.nil?
+        return true
+    end
+    
+    queue = []
+    queue << root
+    queue << root
+    
+    until queue.empty?
+        node_1 = queue.shift
+        node_2 = queue.shift
+        
+        if node_1.nil? && node_2.nil?
+            next
+        end
+        
+        if node_1.nil? || node_2.nil?
+            return false
+        end
+        
+        if node_1.val != node_2.val
+            return false
+        end
+        
+        queue << node_1.left
+        queue << node_2.right
+        queue << node_1.right
+        queue << node_2.left
+    end
+    
+    return true
+end

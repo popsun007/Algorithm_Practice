@@ -13,9 +13,7 @@ def length_of_longest_substring(s)
   max = 0
   start = 0
   0.upto(s.size - 1) do |i|
-    if chars[s[i]].nil?
-      start = [start, 0].max
-    else
+    unless chars[s[i]].nil?
       start = [start, chars[s[i]] + 1].max
     end
     

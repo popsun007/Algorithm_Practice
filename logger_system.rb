@@ -36,7 +36,6 @@ class Logger
         @log = {}
     end
 
-
 =begin
     Returns true if the message should be printed in the given timestamp, otherwise returns false.
         If this method returns false, the message will not be printed.
